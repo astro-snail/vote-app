@@ -1,0 +1,6 @@
+<Context>
+	<Resource name="jdbc/vote_db" auth="Container" type="javax.sql.DataSource"
+          username="root" password="root"
+          url="jdbc:derby:Databases/VoteDB;create=true"
+          driverClassName="org.apache.derby.jdbc.EmbeddedDriver"/>
+</Context>
