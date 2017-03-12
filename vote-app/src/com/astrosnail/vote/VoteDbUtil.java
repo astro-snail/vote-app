@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/* Class that contains all database access methods */
 public class VoteDbUtil {
 	
 	private DataSource dataSource;
@@ -20,11 +21,13 @@ public class VoteDbUtil {
 		this.dataSource = dataSource;
 	}
 	
+	/* Sets up the database: creates tables, inserts candidate entries */
 	public void setUpDatabase() throws SQLException {
 		createTables();
 		addCandidates();
 	}
 	
+	/* Creates tables, executes all the statements in one batch*/
 	public void createTables() throws SQLException {
 		
 		Connection connection = null;
@@ -76,6 +79,7 @@ public class VoteDbUtil {
 		}
 	}
 	
+	/* Inserts candidates, executes all the statements in one batch */
 	public void addCandidates() throws SQLException {
 		
 		Connection connection = null;
@@ -122,6 +126,7 @@ public class VoteDbUtil {
 		}
 	}
 	
+	/* Read all candidates from the database */
 	public List<Candidate> getCandidates() throws SQLException {
 		
 		List<Candidate> candidates = new ArrayList<>();
@@ -161,6 +166,9 @@ public class VoteDbUtil {
 		}
 	}
 	
+	/* Returns vote results as a map, where:
+	 * - key - candidate ID
+	 * - value - total number of votes for this candidate */
 	public Map<Short, Long> getVoteResult() throws SQLException {
 		
 		Map<Short, Long> voteResult = new HashMap<>();
@@ -200,6 +208,8 @@ public class VoteDbUtil {
 		}
 	}
 	
+	/* Reads user entry by USER_ID, also checks for existence:
+	 * if user is not found, then returns User with VOTE_COUNT = 0 */
 	public User getUser(long id) throws SQLException {
 
 		User user = null;
@@ -239,6 +249,7 @@ public class VoteDbUtil {
 		}
 	}
 	
+	/* Updates user record - increments VOTE_COUNT */
 	public void updateUser(User user) throws SQLException {
 		
 		Connection connection = null;
@@ -268,6 +279,7 @@ public class VoteDbUtil {
 		}
 	}
 	
+	/* Inserts new user entry, sets VOTE_COUNT = 1 */
 	public void addUser(User user) throws SQLException {
 		
 		Connection connection = null;
@@ -296,7 +308,8 @@ public class VoteDbUtil {
 			}
 		}
 	}
-		
+	
+	/* Inserts new vote */
 	public void addVote(Vote vote) throws SQLException {
 		
 		Connection connection = null;

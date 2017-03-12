@@ -1,5 +1,7 @@
 package com.astrosnail.vote;
 
+/* Class that represents a user taking part in the vote.
+ * Corresponds to USERS entity/table */
 public class User {
 	
 	private long id;

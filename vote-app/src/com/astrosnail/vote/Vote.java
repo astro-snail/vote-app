@@ -2,6 +2,8 @@ package com.astrosnail.vote;
 
 import java.util.Date;
 
+/* Class that represents a vote in the competition.
+ * Corresponds to VOTE entity/table */
 public class Vote {
 	
 	private User user;

@@ -1,5 +1,7 @@
 package com.astrosnail.vote;
 
+/* Class that represents a candidate in the competition.
+ * Corresponds to the CANDIDATES entity/table */
 public class Candidate implements Comparable<Candidate> {
 	
 	private short id;
@@ -44,6 +46,9 @@ public class Candidate implements Comparable<Candidate> {
 		this.totalVotes = totalVotes;
 	}
 
+	/* Supports sorting of the collection first by number of votes descending
+	 * and then by the name in alphabetical order
+	 */
 	@Override
 	public int compareTo(Candidate other) {
 		if (Long.compare(totalVotes, other.totalVotes) == 0) {
