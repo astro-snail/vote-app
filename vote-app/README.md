@@ -45,5 +45,9 @@ The choice of the database was mainly due to portability and my familiarity with
 The database is created automatically when the servlet starts (if was not created earlier). Then tables are created and some fictitious candidates are inserted. There is a script that contains all the statements executed at start up.
 The database URL is relative to the web application root directory as <root>/Databases/VoteDB. Database connection details are defined in the CONTEXT.XML file.
 
+## Tests
+I could not test the application using automated testing tools (e.g. JUnit), because of the difficulties with web server (Apache Tomcat) and database connection and sadly did not have time to find a good solution. I performed only manual testing.
+
 ## Build
-To run the application please deploy the VOTE-APP.WAR file to the web server. 
+To run the application please deploy the VOTE-APP.WAR file to the web server. I considered using Maven and would have done so had I not run out of time.
+
