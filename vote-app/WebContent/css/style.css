@@ -1,0 +1,43 @@
+html, body{
+	margin: 15px; 
+	padding: 0px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+p.error {
+	color: red;
+	font-weight: bold;
+}
+
+p.success {
+	color: green;
+	font-weight: bold;
+}
+
+table {   
+	border-collapse: collapse;
+	border-bottom: 1px solid gray;
+}
+ 
+th {
+	border-bottom: 1px solid gray;
+	background: none repeat scroll 0 0 #0775d3;
+	padding: 10px;
+	color: #FFFFFF;
+}
+
+tr {
+	border-top: 1px solid gray;
+	text-align: center;	
+}
+ 
+tr:nth-child(even) {background: #FFFFFF}
+tr:nth-child(odd) {background: #BBBBBB}	
+
+button {
+	width: 150px;
+}
+
+input[type=text] {
+	width: 250px;
+}

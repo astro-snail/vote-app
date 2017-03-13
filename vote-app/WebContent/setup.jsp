@@ -6,12 +6,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Vote - Set Up</title>
+		<link type="text/css" rel="stylesheet" href="css/style.css" >
 	</head>
 	
 	<body>
+	
+		<h2>Set Up Database</h2>
 			
 		<form action="VoteControllerServlet" method="POST">
-			<button type="submit" name="submit" value="setUp">Set Up Database</button>
+			<button type="submit" name="submit" value="setUp">Set Up</button>
 		</form>
 		
 	</body>

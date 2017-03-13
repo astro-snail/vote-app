@@ -6,13 +6,14 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Vote - Cast Your Vote</title>
+		<link type="text/css" rel="stylesheet" href="css/style.css" >
 	</head>
 	
 	<body>
-		<p style="color:red">${errorMessage}</p>
+		<p class="error">${errorMessage}</p>
 		<c:remove var="errorMessage" scope="session"/> 
 		
-		<p style="color:green">${successMessage}</p>
+		<p class="success">${successMessage}</p>
 		<c:remove var="successMessage" scope="session"/> 
 		
 		<h2>Vote for Your Candidate!</h2>
@@ -22,9 +23,13 @@
 			<label for="phoneNumber">Phone number:</label>
 			<input type="text" name="phoneNumber" id="phoneNumber" placeholder="Enter your phone number"><br>
 			
+			<br>
+			
 			<c:forEach var="candidate" items="${candidates}">
 				<input type="radio" name="candidate" value="${candidate.id}"> ${candidate.name}<br>
 			</c:forEach>
+			
+			<br>
 			
 			<button type="submit" name="submit" value="addVote">Vote</button>
 
@@ -37,4 +42,5 @@
 		</form>
 		
 	</body>
+	
 </html>

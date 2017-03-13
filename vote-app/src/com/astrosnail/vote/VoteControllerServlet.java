@@ -18,12 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
-
 /*
  * Implements casting of votes and vote count. Mapped to web application root directory.
  */
-@WebServlet("/")
+@WebServlet("/VoteControllerServlet")
 public class VoteControllerServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;

@@ -6,20 +6,34 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Vote - Results</title>
+		<link type="text/css" rel="stylesheet" href="css/style.css" >
 	</head>
 	
 	<body>
 		
 		<h2>Total votes: ${total}</h2>
 		
-		<c:forEach var="candidate" items="${candidates}">
-			${candidate.name} ${candidate.totalVotes}<br>
-		</c:forEach>
+		<table>
+			<thead>
+				<tr>
+					<th>Candidate</th>
+					<th>Number of votes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="candidate" items="${candidates}">
+				<tr>
+					<td>${candidate.name}</td>
+					<td>${candidate.totalVotes}</td>
+				</tr>
+				</c:forEach>
+			</tbody>
 		
+		</table>
+				
 		<br>
 		
 		<a href="VoteControllerServlet">Back</a>
 
 	</body>
 </html>
-
