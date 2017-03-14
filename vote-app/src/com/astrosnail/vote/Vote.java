@@ -4,7 +4,7 @@ import java.util.Date;
 
 /* Class that represents a vote in the competition.
  * Corresponds to VOTE entity/table */
-public class Vote {
+public class Vote implements Comparable<Vote> {
 	
 	private User user;
 	private Candidate candidate;
@@ -44,4 +44,15 @@ public class Vote {
 		this.createdAt = createdAt;
 	}
 	
+	@Override
+	public String toString() {
+		return "User: " + user.getId() + " voted for: " + candidate.getId() + " " + candidate.getName();
+	}
+
+	@Override
+	public int compareTo(Vote o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+		
 }

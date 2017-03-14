@@ -45,6 +45,11 @@ public class Candidate implements Comparable<Candidate> {
 	public void setTotalVotes(long totalVotes) {
 		this.totalVotes = totalVotes;
 	}
+	
+	@Override
+	public String toString() {
+		return id + " " + name;
+	}
 
 	/* Supports sorting of the collection first by number of votes descending
 	 * and then by the name in alphabetical order
