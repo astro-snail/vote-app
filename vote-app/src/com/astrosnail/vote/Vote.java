@@ -46,7 +46,9 @@ public class Vote implements Comparable<Vote> {
 	
 	@Override
 	public String toString() {
-		return "User: " + user.getId() + " voted for: " + candidate.getId() + " " + candidate.getName();
+		return "User: " + user.getId() + 
+				" voted for: " + candidate.getId() + " " + candidate.getName() +
+				" at " + createdAt;
 	}
 
 	@Override

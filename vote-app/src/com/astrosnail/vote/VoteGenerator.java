@@ -1,79 +1,48 @@
 package com.astrosnail.vote;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Random;
 
-public class VoteGenerator {
-		
-	private List<Candidate> candidates;
+public class VoteGenerator implements Runnable{
 
-	public static void main(String[] args) {
-		
-		int n = 100;
-		System.out.println(n + " randomly generated votes:");
-		
-		// Run vote generator
-		VoteGenerator voteGenerator = new VoteGenerator();		
-		VoteQueue voteQueue = new VoteQueue(voteGenerator.getCandidates());
-		
-		for (int i = 0; i < n; i++) {
-			
-			Vote vote = voteGenerator.generateRandomVote();
-			voteQueue.addVote(vote);
-			
-			System.out.println(vote);
-		}
-		
-		System.out.println();
-		
-		for (Candidate candidate : voteQueue.getQueues().keySet()) {
-			
-			Queue<Vote> queue = voteQueue.getQueue(candidate);
-			
-			System.out.println("Queue for candidate: " + candidate + ", votes: " + queue.size());
-			
-			while (queue.peek() != null) {
-			
-				Vote vote = queue.poll();
-				System.out.println(vote);
-			}	
-			
-			System.out.println();
-		}
-	}
+	private final long numberOfVotes;
+	private final List<Candidate> candidates;
+	private VoteQueue queue;
+	private Random random = new Random();
 	
-	public VoteGenerator() {
-		this.candidates = createCandidates();
-	}
-	
-	public List<Candidate> getCandidates() {
-		return candidates;
-	}
-	
-	public List<Candidate> createCandidates() {
-		
-		List<Candidate> candidates = new ArrayList<>();
-		
-		candidates.add(new Candidate((short)1, "Mickey Mouse"));
-		candidates.add(new Candidate((short)2, "Snow White"));
-		candidates.add(new Candidate((short)3, "Cinderella"));
-		candidates.add(new Candidate((short)4, "Puss in Boots"));
-		candidates.add(new Candidate((short)5, "Peppa Pig"));
-		
-		return candidates;
-		
+	public VoteGenerator(List<Candidate> candidates, VoteQueue queue, long numberOfVotes) {
+		this.candidates = candidates;
+		this.queue = queue;
+		this.numberOfVotes = numberOfVotes;
 	}
 	
 	public Vote generateRandomVote() {
 		
-		Random random = new Random();
+		long userId = (long)(random.nextDouble() * numberOfVotes);
+		short candidateIndex = (short)(random.nextInt(candidates.size()));
 		
-		User user = new User(random.nextLong());
-		Candidate candidate = candidates.get((short)random.nextInt(candidates.size()));
+		User user = User.getUser(userId);
+		Candidate candidate = candidates.get(candidateIndex);
 		
 		return new Vote(user, candidate);
 	}
-	
+
+	@Override
+	public void run() {
+		// Run vote generator
+		for (long i = 0; i < numberOfVotes; i++) {
+			// Simulate some delay
+			try {
+				Thread.sleep(500);
+			}	
+			catch (InterruptedException e) {}
+					
+			Vote vote = generateRandomVote();
+
+			synchronized (queue) {
+				queue.addVote(vote);
+			}
+		}
+	}
+
 }
