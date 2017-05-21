@@ -18,7 +18,7 @@ public class VoteGenerator implements Runnable{
 	
 	public Vote generateRandomVote() {
 		
-		long userId = (long)(random.nextDouble() * numberOfVotes);
+		long userId = (long)(random.nextDouble() * numberOfVotes / 10);
 		short candidateIndex = (short)(random.nextInt(candidates.size()));
 		
 		User user = User.getUser(userId);
